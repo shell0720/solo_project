@@ -79,10 +79,6 @@ app.use("/register", register);
 app.use("/user", user);
 app.use("/data", data);
 app.use("/", index);
-// app.use("/",Diary);
-// app.use("/",Movie);
-
-
 
 app.set("port", (process.env.PORT || 5000));
 

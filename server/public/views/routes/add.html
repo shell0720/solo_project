@@ -1,21 +1,19 @@
-<p>
-  <form ng-submit="search(movies)">
-    <input ng-model="movies.name" type="text" placeholder="Search a word" />
-    <input type="submit" value="Search" />
-  </form>
-
-  <form ng-submit="look(words)">
+<p> Look up the words
+  <form ng-submit="search(words)">
     <input ng-model="words.name" type="text" placeholder="Search a word" />
-    <input type="submit" value="Look" />
+    <input type="submit" value="find the antynom and synoym" />
   </form>
 
-  <div ng-repeat="movie in data">
-      <p> nouns syn : {{ movie.noun.syn[0] }}      | ant : {{ movie.noun.ant[0] }} </p>
-      <p> adverb syn : {{ movie.adverb.syn[0]}}     |  ant : {{ movie.adverb.ant[0]}} </p>
-      <p> verb syn : {{ movie.verb.syn[0]}}     | ant : {{ movie.verb.ant[0]}} </p>
-      <p> adj syn : {{ movie.adjective.syn[0]}}     | ant : {{ movie.adjective.ant[0]}} </p>
+  <form ng-submit="look(translate)">
+    <input ng-model="translate.name" type="text" placeholder="Search a word" />
+    <input type="submit" value="Look up in the dictionary" />
+  </form>
 
-
+  <div ng-repeat="word in data">
+      <p> nouns syn : {{ word.noun.syn[0] }}      |          ant : {{ word.noun.ant[0] }} </p>
+      <p> adverb syn : {{ word.adverb.syn[0]}}     |          ant : {{ word.adverb.ant[0]}} </p>
+      <p> verb syn : {{ word.verb.syn[0]}}     |           ant : {{ word.verb.ant[0]}} </p>
+      <p> adj syn : {{ word.adjective.syn[0]}}     |        ant : {{ word.adjective.ant[0]}} </p>
   </div>
 
   <div ng-repeat="word in vocabulary">
@@ -26,7 +24,7 @@
   </div>
 
   <form ng-submit="random(word)">
-    <input ng-model="randomWord.name" type="submit" value="generate"/>
+    <input ng-model="randomWord.name" type="submit" value="generate random word"/>
 
   </form>
   <div ng-repeat = "word in randomWord">
@@ -37,9 +35,36 @@
   </div>
 </p>
 
-<p>
+<p> Diary Entry
   <form ng-submit ="diaryEntry(diary)">
-    <input ng-model="diary.content" type="text" />
+    <label>Date</label>
+    <input ng-model="diary.date" type="date" />
+    <label>Title</label>
+    <input ng-model="diary.title" type="text" />
+    <label>Weather</label>
+    <input ng-model="diary.weather" type="text" />
+    <label>Content</label>
+    <input ng-model="diary.content" type="textarea" />
     <input type="submit" value="entry" />
+  </form>
+</p>
+
+<p> Exercise!
+  <form ng-submit="exerciseEntry(exercise)">
+    <label>Exercise Date</label>
+    <input ng-model="exercise.time" type = "date" />
+    <label>Exercise Type</label>
+    <select ng-model="exercise.type" />
+         <option value="running">Running</option>
+         <option value="swimming">Swimming</option>
+         <option value="skating">Skating</option>
+         <option value="tennis">Tennis</option>
+         <option value="tennis">Yoga</option>
+    </select>
+    <label>Exercise Duration</label>
+    <input ng-model="exercise.duration"  type="number" />
+    <label>Exercise Mood from 1 to 10</label>
+    <input ng-model="exercise.mood" type="range" min="1" max="10"/>
+    <input type="submit" value="Submit Exercise" />
   </form>
 </p>

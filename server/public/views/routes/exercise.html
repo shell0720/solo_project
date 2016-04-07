@@ -1,0 +1,8 @@
+  <h1>
+    Exercise list:
+  </h1>
+  <div ng-repeat="exercise in exerciseEnterd.response">
+
+    <p> Exercise Day: {{ exercise.time}},  Exercise Duration: {{ exercise.duration }} mins,  Exercise Mood: {{ exercise.mood }}, Exercise Type: {{ exercise.type }}</p>
+    <button class="delete" ng-click="deleteEercise(exercise)">Delete</button>
+  </div>

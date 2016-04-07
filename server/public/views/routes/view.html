@@ -1,16 +1,9 @@
-<p>
-  <h1>
-    vocabulary list:
-  </h1>
-  <div ng-repeat="movie in data.response">
-
-    <p> {{ movie.query }} : {{ movie.translation }}</p>
-  </div>
   <h1>
     Diary list:
   </h1>
-  <div ng-repeat="word in wordsEntered.response">
+  <div ng-repeat="diary in diaryEntered.response">
 
-    <p> {{ word.content }}</p>
+    <p> Date: {{ diary.date }}  Title: {{ diary.title }}  Weather: {{ diary.weather }}</p>
+    <p> {{ diary.content }}</p>
+    <button class="delete" ng-click="deleteDiary(diary)">Delete</button>
   </div>
-</p>

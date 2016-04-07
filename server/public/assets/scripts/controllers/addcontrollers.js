@@ -1,11 +1,11 @@
-myApp.controller("AddController", ["$scope", "$http", "MovieService", function($scope, $http, MovieService){
-    $scope.movies = {};
-    $scope.words = {};
-    $scope.diary={};
+myApp.controller("AddController", ["$scope", "$http", "DataService", function($scope, $http, DataService){
+    //$scope.translate = {};
+    //$scope.words = {};
+    //$scope.diary={};
     $scope.randomWord = [];
     $scope.data = [];
     $scope.vocabulary = [];
-
+//search synoym and antynom
     $scope.search = function(data){
       console.log("We are going to go look for ", data);
       $http.get("http://words.bighugelabs.com/api/2/784ce18f8301cae5e5e361a7ec795aca/" + data.name + "/json").then(function(response){
@@ -14,7 +14,7 @@ myApp.controller("AddController", ["$scope", "$http", "MovieService", function($
           $scope.data.push(response.data);
       });
     };
-
+//search chinese-english
     $scope.look = function(data){
       console.log("We are going to go look for ", data);
       $http.get("http://fanyi.youdao.com/openapi.do?keyfrom=shell0720&key=1801546933&type=data&doctype=json&version=1.1&q="+ data.name).then(function(response){
@@ -24,7 +24,6 @@ myApp.controller("AddController", ["$scope", "$http", "MovieService", function($
       });
     };
 
-
     $scope.random = function (data) {
       $http.get("http://randomword.setgetgo.com/get.php").then(function(response){
         $scope.randomWord = [];
@@ -32,26 +31,35 @@ myApp.controller("AddController", ["$scope", "$http", "MovieService", function($
       });
     }
 
+
+//save translation
     $scope.addWord = function(data){
         console.log(data);
         var postObject = {};
         postObject.translation = data.translation;
         postObject.query = data.query;
-        MovieService.postMovie(postObject);
+        DataService.postVocabulary(postObject);
     };
-
+//save diary
     $scope.diaryEntry = function(data){
         console.log(data);
         var postObject = {};
         postObject.content = data.content;
-        MovieService.postWord(postObject);
+        postObject.title = data.title;
+        postObject.date = data.date;
+        postObject.weather = data.weather;
+        DataService.postDiary(postObject);
     };
-}]);
 
-myApp.controller("ShowController", ["$scope", "MovieService", function($scope, MovieService){
-    MovieService.getMovies();
-    MovieService.getWord();
-
-    $scope.data = MovieService.data;
-    $scope.wordsEntered = MovieService.words;
+    //save exercise
+    $scope.exerciseEntry = function(data){
+        console.log(data);
+        var postObject = {};
+        postObject.type = data.type;
+        postObject.time = data.time;
+        postObject.duration = data.duration;
+        postObject.mood = data.mood;
+        postObject.author = data.author;
+        DataService.postExercise(postObject);
+    };
 }]);
