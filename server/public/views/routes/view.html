@@ -1,0 +1,16 @@
+<p>
+  <h1>
+    vocabulary list:
+  </h1>
+  <div ng-repeat="movie in data.response">
+
+    <p> {{ movie.query }} : {{ movie.translation }}</p>
+  </div>
+  <h1>
+    Diary list:
+  </h1>
+  <div ng-repeat="word in wordsEntered.response">
+
+    <p> {{ word.content }}</p>
+  </div>
+</p>

@@ -1,0 +1,45 @@
+<p>
+  <form ng-submit="search(movies)">
+    <input ng-model="movies.name" type="text" placeholder="Search a word" />
+    <input type="submit" value="Search" />
+  </form>
+
+  <form ng-submit="look(words)">
+    <input ng-model="words.name" type="text" placeholder="Search a word" />
+    <input type="submit" value="Look" />
+  </form>
+
+  <div ng-repeat="movie in data">
+      <p> nouns syn : {{ movie.noun.syn[0] }}      | ant : {{ movie.noun.ant[0] }} </p>
+      <p> adverb syn : {{ movie.adverb.syn[0]}}     |  ant : {{ movie.adverb.ant[0]}} </p>
+      <p> verb syn : {{ movie.verb.syn[0]}}     | ant : {{ movie.verb.ant[0]}} </p>
+      <p> adj syn : {{ movie.adjective.syn[0]}}     | ant : {{ movie.adjective.ant[0]}} </p>
+
+
+  </div>
+
+  <div ng-repeat="word in vocabulary">
+    <p>
+      translation: {{ word.translation}}
+    </p>
+    <button ng-click="addWord(word)">Add Word</button>
+  </div>
+
+  <form ng-submit="random(word)">
+    <input ng-model="randomWord.name" type="submit" value="generate"/>
+
+  </form>
+  <div ng-repeat = "word in randomWord">
+
+    <p>
+      {{ word}}
+    </p>
+  </div>
+</p>
+
+<p>
+  <form ng-submit ="diaryEntry(diary)">
+    <input ng-model="diary.content" type="text" />
+    <input type="submit" value="entry" />
+  </form>
+</p>
