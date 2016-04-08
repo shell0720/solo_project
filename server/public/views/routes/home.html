@@ -1,7 +1,9 @@
 <h1>Welcome Back</h1>
 
-<div ng-repeat="user in userEntered.response">
+ <h3>
+   {{user.response.firstname}}
+ </h3>
 
-  <p> {{ user.firstname }}</p>
-
-</div>
+ <p>
+   last login: {{user.response.datecreated}}
+ </p>

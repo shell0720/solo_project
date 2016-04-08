@@ -4,7 +4,7 @@ myApp.factory("DataService", ["$http", function($http){
     var exercise = {};
     var user = {};
 
-    var getUser = function (data){
+    var getUser = function (){
       $http.get("/user/name").then(function(response){
           console.log(response.data);
           user.response = response.data;
@@ -12,43 +12,17 @@ myApp.factory("DataService", ["$http", function($http){
     }
 
     var postVocabulary = function(data){
+        data.userID = user.response.id;
         $http.post("/data/voc", data).then(function(response){
             console.log("Vocabulary SAVED! ", response);
             getVocabulary();
         });
     };
-    var postDiary = function(data){
-        $http.post("/data/diary", data).then(function(response){
-            console.log("diary SAVED! ", response);
-            getDiary();
-        });
-    };
-
-    var postExercise = function(data){
-        $http.post("/data/exercise", data).then(function(response){
-            console.log("exercise SAVED! ", response);
-            getExercise();
-        });
-    };
-
-    var getExercise = function(){
-        $http.get("/data/exercise").then(function(response){
-            console.log(response.data);
-            exercise.response = response.data;
-        });
-    };
 
     var getVocabulary = function(){
-        $http.get("/data/voc").then(function(response){
+        $http.get("/data/voc/"+ user.response.id).then(function(response){
             console.log(response.data);
             data.response = response.data;
-        });
-    };
-
-    var getDiary = function(){
-        $http.get("/data/diary").then(function(response){
-            console.log(response.data);
-            entry.response = response.data;
         });
     };
 
@@ -60,6 +34,20 @@ myApp.factory("DataService", ["$http", function($http){
     });
   };
 
+    var postDiary = function(data){
+        data.userID = user.response.id;
+        $http.post("/data/diary", data).then(function(response){
+            console.log("diary SAVED! ", response);
+            getDiary();
+        });
+    };
+    var getDiary = function(){
+        $http.get("/data/diary/" + user.response.id).then(function(response){
+            console.log(response.data);
+            entry.response = response.data;
+        });
+    };
+
     var deleteDiaryData = function(data){
         $http.delete("/data/diary/"+data._id).then(function(response){
         console.log(data);
@@ -67,6 +55,21 @@ myApp.factory("DataService", ["$http", function($http){
         getDiary();
     });
   };
+
+    var postExercise = function(data){
+        data.userID = user.response.id;
+        $http.post("/data/exercise", data).then(function(response){
+            console.log("exercise SAVED! ", response);
+            getExercise();
+        });
+    };
+
+    var getExercise = function(){
+        $http.get("/data/exercise/"+ user.response.id).then(function(response){
+            console.log(response.data);
+            exercise.response = response.data;
+        });
+    };
 
     var deleteExerciseData = function(data){
         $http.delete("/data/exercise/"+data._id).then(function(response){
@@ -77,6 +80,10 @@ myApp.factory("DataService", ["$http", function($http){
   }
 
     return {
+        data : data,
+        entry: entry,
+        exercise: exercise,
+        user: user,
         postVocabulary : postVocabulary,
         getVocabulary : getVocabulary,
         postDiary: postDiary,
@@ -87,9 +94,6 @@ myApp.factory("DataService", ["$http", function($http){
         deleteExerciseData: deleteExerciseData,
         deleteDiaryData: deleteDiaryData,
         getUser: getUser,
-        data : data,
-        entry: entry,
-        exercise: exercise,
-        user: user
+
     };
 }]);

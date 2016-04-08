@@ -1,8 +1,4 @@
 myApp.controller("ShowController", ["$scope", "DataService", function($scope, DataService){
-    //show user
-    DataService.getUser();
-    $scope.userEntered = DataService.user;
-    console.log($scope.userEntered);
     //show vocabulary
     DataService.getVocabulary();
     $scope.vocabularyEntered = DataService.data;

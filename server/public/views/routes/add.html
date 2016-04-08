@@ -1,4 +1,4 @@
-<p> Look up the words
+<p> Look up words
   <form ng-submit="search(words)">
     <input ng-model="words.name" type="text" placeholder="Search a word" />
     <input type="submit" value="find the antynom and synoym" />
@@ -21,17 +21,6 @@
       translation: {{ word.translation}}
     </p>
     <button ng-click="addWord(word)">Add Word</button>
-  </div>
-
-  <form ng-submit="random(word)">
-    <input ng-model="randomWord.name" type="submit" value="generate random word"/>
-
-  </form>
-  <div ng-repeat = "word in randomWord">
-
-    <p>
-      {{ word}}
-    </p>
   </div>
 </p>
 

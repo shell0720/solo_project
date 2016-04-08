@@ -1,7 +1,5 @@
 myApp.controller("AddController", ["$scope", "$http", "DataService", function($scope, $http, DataService){
-    //$scope.translate = {};
-    //$scope.words = {};
-    //$scope.diary={};
+  //set variables to store objects
     $scope.randomWord = [];
     $scope.data = [];
     $scope.vocabulary = [];
@@ -24,42 +22,28 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
       });
     };
 
-    $scope.random = function (data) {
-      $http.get("http://randomword.setgetgo.com/get.php").then(function(response){
-        $scope.randomWord = [];
-        $scope.randomWord.push(response.data);
-      });
-    }
+    // $scope.random = function (data) {
+    //   $http.get("http://randomword.setgetgo.com/get.php").then(function(response){
+    //     $scope.randomWord = [];
+    //     $scope.randomWord.push(response.data);
+    //   });
+    // }
 
 
 //save translation
     $scope.addWord = function(data){
         console.log(data);
-        var postObject = {};
-        postObject.translation = data.translation;
-        postObject.query = data.query;
-        DataService.postVocabulary(postObject);
+        DataService.postVocabulary(data);
     };
 //save diary
     $scope.diaryEntry = function(data){
         console.log(data);
-        var postObject = {};
-        postObject.content = data.content;
-        postObject.title = data.title;
-        postObject.date = data.date;
-        postObject.weather = data.weather;
-        DataService.postDiary(postObject);
+        DataService.postDiary(data);
     };
 
     //save exercise
     $scope.exerciseEntry = function(data){
         console.log(data);
-        var postObject = {};
-        postObject.type = data.type;
-        postObject.time = data.time;
-        postObject.duration = data.duration;
-        postObject.mood = data.mood;
-        postObject.author = data.author;
-        DataService.postExercise(postObject);
+        DataService.postExercise(data);
     };
 }]);

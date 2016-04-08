@@ -4,9 +4,13 @@ var passport = require('passport');
 var path = require('path');
 
 router.post("/", passport.authenticate('local', {
-  successRedirect: "/views/users.html",
+  successRedirect: "/users/",
   failureRedirect: "/"
 }));
+
+router.get("/users", function(req,res,next){
+    res.sendFile(path.resolve(__dirname, "../public/views/users.html"));
+});
 
 router.get("/*", function(req, res, next){
   console.log(req.params[0]);

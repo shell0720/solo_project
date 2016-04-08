@@ -6,8 +6,9 @@ var Vocabulary = require('../models/vocabulary');
 var Exercise = require('../models/exercise');
 
 
-router.get("/voc", function(req, res){
-  Vocabulary.find({}, function(err, data){
+router.get("/voc/:userID/", function(req, res){
+  var userID = req.params.userID;
+  Vocabulary.find({user: userID}, function(err, data){
     if (err){
       console.log(err);
     }
@@ -17,6 +18,7 @@ router.get("/voc", function(req, res){
 
 router.post("/voc", function(req,res){
   var addedVoc = new Vocabulary({
+    "user": req.body.userID,
     "translation": req.body.translation,
     "query": req.body.query
   });
@@ -37,8 +39,9 @@ router.delete('/voc/:id', function(req,res){
   });
 });
 
-router.get("/diary", function(req, res){
-  Diary.find({}, function(err, data){
+router.get("/diary/:userID/", function(req, res){
+  var userID = req.params.userID;
+  Diary.find({user: userID}, function(err, data){
     if (err){
       console.log(err);
     }
@@ -48,6 +51,7 @@ router.get("/diary", function(req, res){
 
 router.post("/diary", function(req,res){
   var addedDiary = new Diary({
+    "user": req.body.userID,
     "content": req.body.content,
     "date": req.body.date,
     "title": req.body.title,
@@ -70,8 +74,9 @@ router.delete("/diary/:id", function(req,res){
   });
 });
 
-router.get("/exercise", function(req, res){
-  Exercise.find({}, function(err, data){
+router.get("/exercise/:userID/", function(req, res){
+  var userID = req.params.userID;
+  Exercise.find({user: userID}, function(err, data){
     if (err){
       console.log(err);
     }
@@ -81,6 +86,7 @@ router.get("/exercise", function(req, res){
 
 router.post("/exercise", function(req,res){
   var addedExercise = new Exercise({
+    "user": req.body.userID,
     "type": req.body.type,
     "time": req.body.time,
     "duration": req.body.duration,

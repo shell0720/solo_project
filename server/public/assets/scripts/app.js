@@ -2,13 +2,16 @@ var myApp = angular.module("myApp", ["ngRoute"]);
 
 myApp.config(["$routeProvider", function($routeProvider){
     $routeProvider.
-
+        when("/home", {
+            templateUrl: "/views/routes/home.html",
+            controller: "HomeController"
+        }).
         when("/add", {
             templateUrl: "/views/routes/add.html",
             controller: "AddController"
         }).
-        when("/view", {
-            templateUrl: "/views/routes/view.html",
+        when("/diary", {
+            templateUrl: "/views/routes/diary.html",
             controller: "ShowController"
         }).
         when("/vocabulary", {
@@ -17,10 +20,6 @@ myApp.config(["$routeProvider", function($routeProvider){
         }).
         when("/exercise", {
             templateUrl: "/views/routes/exercise.html",
-            controller: "ShowController"
-        }).
-        when("/home", {
-            templateUrl: "/views/routes/home.html",
             controller: "ShowController"
         }).
         otherwise({

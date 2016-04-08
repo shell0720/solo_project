@@ -4,15 +4,16 @@ var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 var NewUser = new Schema({
-  username: {type:String, required: true, index: {unique: true}},
+  username: {type: String, required: true, index: {unique: true}},
   password: {type: String, required: true},
   firstname: {type: String, required: true},
   lastname: {type: String, required: true},
   lastlogin: {type: Date, default: Date.now}
 });
 
+
 NewUser.pre('save', function(next){
-  console.log("AT Pre!");
+  console.log("At Pre!");
   var user = this;
   if(!user.isModified('password'))return next;
   bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt){
