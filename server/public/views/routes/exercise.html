@@ -1,8 +1,39 @@
-  <h1>
-    Exercise list:
-  </h1>
-  <div ng-repeat="exercise in exerciseEnterd.response">
+  <md-content layout-padding>
+      <div style="width : 600px; margin: 0 auto;">
+        <h1>
+          Exercise list:
+        </h1>
+        <div ng-repeat="exercise in exerciseEnterd.response">
 
-    <p> Exercise Day: {{ exercise.time}},  Exercise Duration: {{ exercise.duration }} mins,  Exercise Mood: {{ exercise.mood }}, Exercise Type: {{ exercise.type }}</p>
-    <button class="delete" ng-click="deleteEercise(exercise)">Delete</button>
-  </div>
+            <md-card>
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">Exercise Type: {{ exercise.type }}</span>
+                  </md-card-title-text>
+                </md-card-title>
+
+                <md-card-content>
+                  <div>
+                    <p>
+                        Exercise Day: {{ exercise.time}}
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      Exercise Duration: {{ exercise.duration }} mins
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                        Mood: {{ exercise.mood }}
+                    </p>
+                  </div>
+                </md-card-content>
+
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button ng-click="deleteEercise(exercise)">Delete</md-button>
+                </md-card-actions>
+            </md-card>
+          </div>
+        </div>
+    </md-content>

@@ -4,9 +4,16 @@
   <head>
     <meta charset="utf-8">
     <title>Personal Improvement</title>
-
-    <script type="text/javascript" src="/assets/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/assets/vendors/angular-route.min.js"></script>
+    <!-- STYLES -->
+    <link rel="stylesheet" href="/assets/vendors/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/style/style.css" />
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="/assets/vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers/homecontroller.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers/addcontrollers.js"></script>
@@ -15,16 +22,31 @@
 
   </head>
   <body>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#add">Compose</a></li>
-      <li><a href="#diary">Diary</a></li>
-      <li><a href="#vocabulary">Vocabulary</a></li>
-      <li><a href="#exercise">Exercise</a></li>
-      <a href="/">Sign Out</a>
-    </ul>
+    <body ng-app="MyApp" layout="row" ng-cloak>
 
-    <main ng-view>
+     <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
+       <ul>
+         <li><a href="#home">Home</a></li>
+         <li><a href="#add">Compose</a></li>
+         <li><a href="#diary">Diary</a></li>
+         <li><a href="#vocabulary">Vocabulary</a></li>
+         <li><a href="#exercise">Exercise</a></li>
+         <a href="/">Sign Out</a>
+       </ul>
+       </md-sidenav>
+
+      <md-content flex layout="column">
+        <ng-view>
+
+            <main ng-view>
+        </ng-view>
+      </md-content>
+    </body>
+
+
+
+
+
 
     </main>
   </body>

@@ -1,0 +1,15 @@
+md-sidenav  {
+  width: 200px;height:100%;
+  padding:20px;
+  background-color: #6bc7cc;
+}
+
+md-content {
+  background-color : white;
+  height:100%;
+  padding:20px;
+}
+
+md-datepicker {
+  margin-right: 20px;
+}

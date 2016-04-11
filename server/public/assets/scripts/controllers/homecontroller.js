@@ -2,6 +2,5 @@ myApp.controller("HomeController", ["$scope", "DataService", function($scope, Da
   //show user
   DataService.getUser();
   $scope.user = DataService.user;
-  console.log($scope.userEntered);
 
 }]);

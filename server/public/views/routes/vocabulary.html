@@ -1,7 +1,30 @@
-<h1>
-  Vocabulary List:
-</h1>
-<div ng-repeat="vocabulary in vocabularyEntered.response">
-  <p> {{ vocabulary.query }} : {{ vocabulary.translation }}</p>
-  <button class="delete" ng-click="deleteVoc(vocabulary)">Delete</button>
-</div>
+<md-content layout-padding>
+    <div style="width : 600px; margin: 0 auto;">
+      <h1>
+        Vocabulary List:
+      </h1>
+    <div ng-repeat="vocabulary in vocabularyEntered.response">
+
+          <md-card>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">{{ vocabulary.query }}</span>
+                </md-card-title-text>
+              </md-card-title>
+
+              <md-card-content>
+                <div>
+                  <p>
+                      {{ vocabulary.translation }}
+                  </p>
+                </div>
+
+              </md-card-content>
+
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="deleteVoc(vocabulary)">Delete</md-button>
+              </md-card-actions>
+          </md-card>
+        </div>
+      </div>
+  </md-content>

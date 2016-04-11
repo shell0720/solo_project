@@ -1,9 +1,40 @@
-  <h1>
-    Diary list:
-  </h1>
-  <div ng-repeat="diary in diaryEntered.response">
+<md-content layout-padding>
+    <div style="width : 600px; margin: 0 auto;">
+    <h1>  Diary list:  </h1>
+    <div ng-repeat="diary in diaryEntered.response">
 
-    <p> Date: {{ diary.date }}  Title: {{ diary.title }}  Weather: {{ diary.weather }}</p>
-    <p> {{ diary.content }}</p>
-    <button class="delete" ng-click="deleteDiary(diary)">Delete</button>
-  </div>
+          <md-card>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Title: {{ diary.title }}</span>
+                </md-card-title-text>
+              </md-card-title>
+
+              <md-card-content>
+                <div>
+                  <p>
+                      Date: {{ diary.date }}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                      Weather: {{ diary.weather }}
+                  </p>
+                </div>
+                <div>
+                  <h4>
+                      Content:
+                  </h4>
+                  <p>
+                      {{ diary.content }}
+                  </p>
+                </div>
+              </md-card-content>
+
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="deleteDiary(diary)">Delete</md-button>
+              </md-card-actions>
+          </md-card>
+        </div>
+      </div>
+  </md-content>

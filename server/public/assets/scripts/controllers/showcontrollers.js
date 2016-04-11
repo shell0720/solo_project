@@ -11,16 +11,13 @@ myApp.controller("ShowController", ["$scope", "DataService", function($scope, Da
     //delete vocabulary
     $scope.deleteVoc = function(data){
       DataService.deleteVocData(data);
-      console.log("meow");
     }
     //delete diary
     $scope.deleteDiary = function(data){
       DataService.deleteDiaryData(data);
-      console.log("meow");
     }
     //delete exercise
     $scope.deleteEercise = function(data){
       DataService.deleteExerciseData(data);
-      console.log("meow");
     }
 }]);
