@@ -1,39 +1,31 @@
   <md-content layout-padding>
-      <div style="width : 600px; margin: 0 auto;">
+      <div style="width : 1000px; margin: 0 auto;">
         <h1>
-          Exercise list:
+          Exercise List:
         </h1>
-        <div ng-repeat="exercise in exerciseEnterd.response">
+        <md-table-container>
+        <table md-table md-row-select multiple ng-model="exercise" id="exerciseShowTable">
+          <thead md-head md-order ="myOrder">
+            <tr md-row>
+              <th md-column md-order-by="nameToLower"><span>Date</span></th>
+              <th md-column >Type</th>
+              <th md-column ><span>Duration</span></th>
 
-            <md-card>
-                <md-card-title>
-                  <md-card-title-text>
-                    <span class="md-headline">Exercise Type: {{ exercise.type }}</span>
-                  </md-card-title-text>
-                </md-card-title>
+              <th md-column >Mood</th>
+              <th md-column >Action</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="exercise" md-select-id="name" md-auto-select ng-repeat="exercise in exerciseEnterd.response | orderBy: myOder">
+              <td md-cell>{{exercise.time | date:'M/d/yyyy'}}</td>
+              <td md-cell>{{exercise.type}}</td>
+              <td md-cell>{{exercise.duration}}</td>
+              <td md-cell>{{exercise.mood}}</td>
+              <td md-button class="md-primary md-warn" ng-click="deleteEercise(exercise)">delete</td md-button>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
 
-                <md-card-content>
-                  <div>
-                    <p>
-                        Exercise Day: {{ exercise.time}}
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      Exercise Duration: {{ exercise.duration }} mins
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                        Mood: {{ exercise.mood }}
-                    </p>
-                  </div>
-                </md-card-content>
-
-                <md-card-actions layout="row" layout-align="end center">
-                  <md-button ng-click="deleteEercise(exercise)">Delete</md-button>
-                </md-card-actions>
-            </md-card>
-          </div>
         </div>
     </md-content>

@@ -2,8 +2,8 @@ var myApp = angular.module("myApp", ["ngMaterial", "ngMessages", "ngRoute"]);
 
 myApp.config(['$mdThemingProvider', function($mdThemingProvider){
     $mdThemingProvider.theme('default')
-        .primaryPalette('blue-grey')
-        .accentPalette('grey');
+        .primaryPalette('teal')
+        .accentPalette('orange');
 }]);
 
 myApp.config(["$routeProvider", function($routeProvider){

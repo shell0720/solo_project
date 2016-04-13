@@ -1,9 +1,13 @@
-<h1>Welcome Back</h1>
 
- <h3>
+<div class="homeBackground">
+<h1 class="md-display-3">Welcome Back</h1>
+
+ <h2>
    {{user.response.firstname}}
- </h3>
+ </h2>
 
  <p>
-   last login: {{user.response.datecreated}}
+   Last Login: {{user.response.datecreated | date:'M/d/yyyy HH:mm:ss'}}
  </p>
+
+</div>

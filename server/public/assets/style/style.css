@@ -1,15 +1,68 @@
+.homeBackground {
+background: url("/assets/image/background.jpg");
+background-size:100%;
+position: fixed;
+text-align: center;
+top:0;
+left:0;
+width: 100%;
+height: 100%;
+color: GREEN;
+}
 md-sidenav  {
-  width: 200px;height:100%;
-  padding:20px;
-  background-color: #6bc7cc;
+  width: 180px;height:100%;
+  background-color: rgba(0, 137, 123, 0.6);
+  font-style:times;
+  font-size: 20px;
 }
 
+
 md-content {
-  background-color : white;
+  background-color : #E0F2F1;
   height:100%;
-  padding:20px;
+
 }
 
 md-datepicker {
   margin-right: 20px;
+  height: 50px;
+  width:200px;
+  background-color: grey;
+}
+
+
+li {
+  margin: 50px 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: hotpink;
+  font-size: 25px;
+}
+
+#left {
+  float: left;
+  width: 45%;
+  margin-left: 25px;
+}
+
+#right {
+  float: right;
+  width: 45%;
+  margin-right: 25px;
+}
+
+#exerciseShowTable{
+width:100%;
+font-size: 25px;
+text-align: center;
+padding: 30px;
+}
+
+tr {
+  background: white;
 }

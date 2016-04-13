@@ -9,7 +9,7 @@ myApp.factory("DataService", ["$http", function($http){
           console.log(response.data);
           user.response = response.data;
       });
-    }
+    };
 
     var postVocabulary = function(data){
         data.userID = user.response.id;
@@ -77,7 +77,9 @@ myApp.factory("DataService", ["$http", function($http){
         console.log(response.data);
         getExercise();
     });
-  }
+  };
+
+    getUser();
 
     return {
         data : data,

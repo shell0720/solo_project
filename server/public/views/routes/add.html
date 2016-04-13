@@ -1,43 +1,14 @@
 <md-content layout-padding>
-    <div style="width : 800px; margin: 0 auto;">
       <div layout-align="center center" layout="column">
-        <h1 class="md-title">Personal Data Entry</h1>
+        <h1 class="md-display-3" > Write Your Day</h1>
     </div>
 
-<p> Look up words
-  <form ng-submit="search(words)">
-    <input ng-model="words.name" type="text" placeholder="Search a word" />
-    <input type="submit" value="find the antynom and synoym" />
-  </form>
-
-  <form ng-submit="look(translate)">
-    <input ng-model="translate.name" type="text" placeholder="Search a word" />
-    <input type="submit" value="Look up in the dictionary" />
-  </form>
-
-  <div ng-repeat="word in data">
-      <p> nouns syn : {{ word.noun.syn[0] }}      |          ant : {{ word.noun.ant[0] }} </p>
-      <p> adverb syn : {{ word.adverb.syn[0]}}     |          ant : {{ word.adverb.ant[0]}} </p>
-      <p> verb syn : {{ word.verb.syn[0]}}     |           ant : {{ word.verb.ant[0]}} </p>
-      <p> adj syn : {{ word.adjective.syn[0]}}     |        ant : {{ word.adjective.ant[0]}} </p>
-  </div>
-
-  <div ng-repeat="word in vocabulary">
-    <p>
-      translation: {{ word.translation}}
-    </p>
-
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-
-    <button ng-click="addWord(word)">Add Word</button>
-
-
-
-  </div>
-</p>
-
-
-<p> Diary Entry
+<div id = "left">
+<md-toolbar class="md-theme-light" >
+  <h2 class="md-toolbar-tools">
+    <span>Diary Entry</span>
+  </h2>
+</md-toolbar>
 
   <form ng-submit ="diaryForm">
   <div layout-gt-sm="row">
@@ -63,27 +34,43 @@
 </div>
 
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-      <md-button ng-click="diaryEntry(diary)">SUBMIT</md-button>
+      <md-button class="md-raised" ng-click="diaryEntry(diary)">SUBMIT</md-button>
     </section>
 
   </form>
-</p>
+  <p class="lookup"> Look up synoym & antynom
+    <form ng-submit="search(words)">
+      <input ng-model="words.name" type="text" placeholder="Search a word" />
+      <input type="submit" value="find the antynom and synoym" />
+    </form>
+    <div ng-repeat="word in data">
+        <p> nouns syn : {{ word.noun.syn[0] }}      |          ant : {{ word.noun.ant[0] }} </p>
+        <p> adverb syn : {{ word.adverb.syn[0]}}     |          ant : {{ word.adverb.ant[0]}} </p>
+        <p> verb syn : {{ word.verb.syn[0]}}     |           ant : {{ word.verb.ant[0]}} </p>
+        <p> adj syn : {{ word.adjective.syn[0]}}     |        ant : {{ word.adjective.ant[0]}} </p>
+    </div>
+    </p>
 
-<p> Exercise!
+
+</div>
+
+<div id="right">
+
+<md-toolbar class="md-theme-light">
+  <h2 class="md-toolbar-tools">
+    <span>Exercise Entry</span>
+  </h2>
+</md-toolbar>
+
   <form ng-submit="exerciseForm">
     <div layout-gt-sm="row">
     <md-datepicker ng-model="exercise.time" md-placeholder="Enter date"></md-datepicker>
     <!-- <label>Exercise Date</label> -->
 
-    <md-input-container class="md-block" flex-gt-sm>
+  <md-input-container class="md-block" flex-gt-sm>
     <label>Exercise Type</label>
-
     <md-select ng-model="exercise.type" />
-         <md-option value="running">Running</md-option>
-         <md-option value="swimming">Swimming</md-option>
-         <md-option value="skating">Skating</md-option>
-         <md-option value="tennis">Tennis</md-option>
-         <md-option value="tennis">Yoga</md-option>
+         <md-option ng-repeat="exercise in exercises" value="{{exercise}}">{{exercise}}</md-option>
     </md-select>
   </md-input-container>
 </div>
@@ -95,22 +82,37 @@
     </md-input-container>
   </div>
 
-    <!-- <md-input-container class="md-block" flex-gt-sm> -->
   <div layout-gt-sm="row">
+  <md-input-container class="md-block" flex-gt-sm>
+
     <md-slider-container>
      <span>Exercise Mood from 1 to 10</span>
-     <md-slider ng-model="exercise.mood" flex min="1" max="10" aria-label="red" id="mood-slider" >
+     <md-slider ng-model="exercise.mood" min="1" max="10" id="mood-slider" flex-gt-sm >
      </md-slider>
-     <md-input-container>
-       <input flex type="number" ng-model="exercise.mood" aria-label="red" aria-controls="mood-slider">
-     </md-input-container>
     </md-slider-container>
-    <!-- </md-input-container> -->
+    </md-input-container>
   </div>
   <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-    <md-button ng-click="exerciseEntry(exercise)">SUBMIT</md-button>
+    <md-button class="md-raised" ng-click="exerciseEntry(exercise)">SUBMIT</md-button>
   </section>
   </form>
-</p>
-</div>
+
+  <p class = "trans"> translation
+      <form ng-submit="look(translate)">
+        <input ng-model="translate.name" type="text" placeholder="Search a word" />
+        <input type="submit" value="Look up in the dictionary" />
+
+      </form>
+
+      <div ng-repeat="word in vocabulary">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+
+        <p>
+          translation: {{ word.translation}}
+        </p>
+        <button ng-click="addWord(word)">Add Word</button>
+
+      </div>
+      </p>
+  </div>
 </md-content>

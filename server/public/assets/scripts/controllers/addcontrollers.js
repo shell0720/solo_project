@@ -3,6 +3,7 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
     $scope.randomWord = [];
     $scope.data = [];
     $scope.vocabulary = [];
+    $scope.exercises = ["Running","Swimming","Yoga","Tennis","Skating"];
 //search synoym and antynom
     $scope.search = function(data){
       console.log("We are going to go look for ", data);
@@ -10,6 +11,7 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
           console.log(response.data);
           $scope.data = [];
           $scope.data.push(response.data);
+          $scope.words ={};
       });
     };
 //search chinese-english
@@ -19,15 +21,9 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
           console.log(response.data);
           $scope.vocabulary = [];
           $scope.vocabulary.push(response.data);
+          $scope.translate = {};
       });
     };
-
-    // $scope.random = function (data) {
-    //   $http.get("http://randomword.setgetgo.com/get.php").then(function(response){
-    //     $scope.randomWord = [];
-    //     $scope.randomWord.push(response.data);
-    //   });
-    // }
 
 
 //save translation
@@ -39,11 +35,12 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
     $scope.diaryEntry = function(data){
         console.log(data);
         DataService.postDiary(data);
+        $scope.diary ={};
     };
-
     //save exercise
     $scope.exerciseEntry = function(data){
         console.log(data);
         DataService.postExercise(data);
+        $scope.exercise = {};
     };
 }]);
