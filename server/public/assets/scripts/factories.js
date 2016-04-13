@@ -73,11 +73,11 @@ myApp.factory("DataService", ["$http", function($http){
 
     var deleteExerciseData = function(data){
         $http.delete("/data/exercise/"+data._id).then(function(response){
-        console.log(data);
-        console.log(response.data);
-        getExercise();
-    });
-  };
+          console.log(data);
+          console.log(response.data);
+          getExercise();
+      });
+    };
 
     getUser();
 
@@ -94,8 +94,7 @@ myApp.factory("DataService", ["$http", function($http){
         getExercise: getExercise,
         deleteVocData: deleteVocData,
         deleteExerciseData: deleteExerciseData,
-        deleteDiaryData: deleteDiaryData,
-        getUser: getUser,
+        deleteDiaryData: deleteDiaryData
 
     };
 }]);

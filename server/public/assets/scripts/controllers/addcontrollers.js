@@ -37,6 +37,10 @@ myApp.controller("AddController", ["$scope", "$http", "DataService", function($s
         DataService.postDiary(data);
         $scope.diary ={};
     };
+    $scope.countOf = function(text){
+      var s = text ? text.split(/\s+/) : 0; // it splits the text on space/tab/enter
+      return s ? s.length : '';
+    }
     //save exercise
     $scope.exerciseEntry = function(data){
         console.log(data);

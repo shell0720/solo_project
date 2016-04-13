@@ -105,7 +105,6 @@ router.delete("/exercise/:id", function(req,res){
   Exercise.findByIdAndRemove(req.params.id, function(err, data){
     if (err) console.log(err);
     res.send(data);
-
   });
 });
 

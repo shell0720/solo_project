@@ -5,11 +5,12 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var localStrategy = require('passport-local');
-var mongoose = require('mongoose');
+var logout = require('express-passport-logout');
 //models
 var User = require('./models/user');
 
 //routes
+var db = require("./routes/db");
 var index = require('./routes/index');
 var register = require('./routes/register');
 var user = require('./routes/user');
@@ -29,17 +30,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//MONGO SETUP
-var mongoURI = "mongodb://localhost/kappa_solo";
-var MongoDB = mongoose.connect(mongoURI).connection;
-
-MongoDB.on("error", function(err){
-    console.log("Mongo Connection Error: ", err);
-});
-
-MongoDB.once("open", function(err){
-    console.log("Mongo Connection Open");
-});
 
 //PASSPORT SESSION
 passport.serializeUser(function(user, done){
@@ -74,6 +64,12 @@ passport.use("local", new localStrategy({
         });
     }
 ));
+//logout
+app.get('/logout', function(req,res){
+  console.log("logging out");
+  req.logout();
+  res.redirect('/');
+});
 
 app.use("/register", register);
 app.use("/user", user);

@@ -10,7 +10,7 @@ myApp.controller("ShowController", ["$scope", "DataService", function($scope, Da
 
     //show exercise
     DataService.getExercise();
-    $scope.exerciseEnterd = DataService.exercise;
+    $scope.exerciseEntered = DataService.exercise;
     // $scope.exerNum = $scope.exerciseEntered.response.length;
     //delete vocabulary
     $scope.deleteVoc = function(data){

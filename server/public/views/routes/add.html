@@ -29,7 +29,8 @@
   <div layout-gt-sm="row">
     <md-input-container class="md-block" flex-gt-sm>
     <label>Content</label>
-    <textarea ng-model="diary.content"></textarea>
+    <textarea ng-model="diary.content" cols="80" rows="20"></textarea>
+    <div>total words: <span ng-bind="countOf(diary.content)"></span></div>
     </md-input-container>
 </div>
 
@@ -38,10 +39,10 @@
     </section>
 
   </form>
-  <p class="lookup"> Look up synoym & antynom
-    <form ng-submit="search(words)">
+  <p class="lookup">
+    <form>
       <input ng-model="words.name" type="text" placeholder="Search a word" />
-      <input type="submit" value="find the antynom and synoym" />
+      <md-button class="md-flat" ng-click="search(words)">find the antynom and synoym</md-button>
     </form>
     <div ng-repeat="word in data">
         <p> nouns syn : {{ word.noun.syn[0] }}      |          ant : {{ word.noun.ant[0] }} </p>
@@ -65,7 +66,6 @@
   <form ng-submit="exerciseForm">
     <div layout-gt-sm="row">
     <md-datepicker ng-model="exercise.time" md-placeholder="Enter date"></md-datepicker>
-    <!-- <label>Exercise Date</label> -->
 
   <md-input-container class="md-block" flex-gt-sm>
     <label>Exercise Type</label>
@@ -84,9 +84,8 @@
 
   <div layout-gt-sm="row">
   <md-input-container class="md-block" flex-gt-sm>
-
     <md-slider-container>
-     <span>Exercise Mood from 1 to 10</span>
+     <span>Mood: from 1 to 10</span>
      <md-slider ng-model="exercise.mood" min="1" max="10" id="mood-slider" flex-gt-sm >
      </md-slider>
     </md-slider-container>
@@ -97,10 +96,10 @@
   </section>
   </form>
 
-  <p class = "trans"> translation
-      <form ng-submit="look(translate)">
+  <p class = "trans">
+      <form>
         <input ng-model="translate.name" type="text" placeholder="Search a word" />
-        <input type="submit" value="Look up in the dictionary" />
+        <md-button class="md-flat" ng-click="look(translate)">Look up in the dictionary</md-button>
 
       </form>
 
@@ -108,7 +107,7 @@
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 
         <p>
-          translation: {{ word.translation}}
+          Translation: {{ word.translation}}
         </p>
         <button ng-click="addWord(word)">Add Word</button>
 
